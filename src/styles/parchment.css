@@ -1,0 +1,89 @@
+/* ===== PARCHMENT BACKGROUND ===== */
+.parchment-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #ede0bf; /* Fallback */
+  overflow: hidden;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===== HEADER BANNER ===== */
+.header-banner {
+  display: flex;
+  justify-content: center;
+  padding-top: 32px;
+  pointer-events: auto;
+  position: relative;
+  z-index: 100;
+}
+
+.header-banner-inner {
+  position: relative;
+  background: linear-gradient(180deg, #7a1810 0%, #a82418 30%, #b82b1c 50%, #a82418 70%, #7a1810 100%);
+  padding: 12px 60px;
+  border: 2px solid #e5c158;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,0,0.3);
+  /* The reference has angled corners. Let's use clip-path to make the octagonal/hexagonal shape if needed, 
+     but a simpler approach is just rounded corners with a pseudo element for the pointy ends. */
+}
+
+/* Left point */
+.header-banner-inner::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -24px;
+  width: 30px;
+  background: linear-gradient(180deg, #7a1810 0%, #a82418 30%, #b82b1c 50%, #a82418 70%, #7a1810 100%);
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  /* Simulate border using drop shadow is tricky, but we can do our best */
+}
+
+/* Right point */
+.header-banner-inner::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -24px;
+  width: 30px;
+  background: linear-gradient(180deg, #7a1810 0%, #a82418 30%, #b82b1c 50%, #a82418 70%, #7a1810 100%);
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+.header-deco-left,
+.header-deco-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e5c158;
+  font-size: 16px;
+  line-height: 1;
+  z-index: 2;
+}
+.header-deco-left { left: 10px; }
+.header-deco-right { right: 10px; }
+
+.header-title {
+  color: #f7e1a0;
+  font-family: var(--font-family);
+  font-size: clamp(16px, 1.8vw, 28px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  white-space: nowrap;
+  line-height: 1.2;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+}

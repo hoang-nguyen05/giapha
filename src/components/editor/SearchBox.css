@@ -1,0 +1,219 @@
+.search-box-wrapper {
+  position: relative;
+  width: 280px;
+  max-width: 100%;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(196, 155, 56, 0.45);
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.search-input-container:focus-within {
+  background: #FFFFFF;
+  border-color: #C49B38;
+  box-shadow: 0 0 0 3px rgba(196, 155, 56, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.search-icon {
+  color: #8C6A48;
+  flex-shrink: 0;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #361F10;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #A38565;
+  font-size: 12.5px;
+}
+
+.search-clear-btn {
+  background: transparent;
+  border: none;
+  color: #8C6A48;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-clear-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #361F10;
+}
+
+/* Results Dropdown */
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 320px;
+  max-height: 380px;
+  background: rgba(254, 250, 242, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1.5px solid #C49B38;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(43, 35, 27, 0.22), 0 2px 6px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: dropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: rgba(196, 155, 56, 0.12);
+  border-bottom: 1px solid rgba(196, 155, 56, 0.25);
+  font-size: 11px;
+  font-weight: 700;
+  color: #7A5C3D;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-hint {
+  font-size: 10px;
+  color: #A38565;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.search-results-list {
+  list-style: none;
+  padding: 4px 0;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 320px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid rgba(196, 155, 56, 0.08);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: rgba(196, 155, 56, 0.16);
+  transform: translateX(3px);
+}
+
+.result-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.dot-main { background-color: #B8860B; }
+.dot-blue { background-color: #4A90E2; }
+.dot-green { background-color: #48BB78; }
+.dot-red { background-color: #E53E3E; }
+.dot-gold { background-color: #ECC94B; }
+
+.result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.result-name {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #361F10;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-gen-tag {
+  background: #7A1810;
+  color: #FCE69C;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.result-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #8C6A48;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-branch {
+  font-weight: 600;
+  color: #5C3A21;
+}
+
+.result-years {
+  color: #7A5C3D;
+}
+
+.result-note {
+  font-style: italic;
+  color: #997858;
+}
+
+.search-no-results {
+  padding: 24px 16px;
+  text-align: center;
+  color: #8C6A48;
+  font-size: 13px;
+  font-style: italic;
+}

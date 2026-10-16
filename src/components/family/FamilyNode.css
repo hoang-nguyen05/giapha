@@ -1,0 +1,245 @@
+.family-node {
+  position: relative;
+  width: 132px;
+  min-height: 50px;
+  background-color: #FFFDF9;
+  border: 1.5px solid #C49B38;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(43, 35, 27, 0.12), inset 0 0 10px rgba(230, 210, 150, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px 6px;
+  font-family: var(--font-serif);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.family-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(43, 35, 27, 0.2), inset 0 0 14px rgba(255, 230, 160, 0.45);
+}
+
+/* Generation Badge on Top Border */
+.node-gen-badge {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #7A1810 0%, #A82418 100%);
+  color: #FCE69C;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid #E5C158;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+/* Quick Hover Action Buttons */
+.node-hover-actions {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(38, 28, 20, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 2px 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(225, 177, 44, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.family-node:hover .node-hover-actions {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.node-action-btn {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: #F7EFE0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.node-action-btn:hover {
+  background: #C49B38;
+  color: #1A120B;
+  transform: scale(1.15);
+}
+
+/* Node Content */
+.node-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.node-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.node-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #361F10;
+  letter-spacing: -0.2px;
+}
+
+.node-years {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  color: #8C6A48;
+  margin-top: 2px;
+  letter-spacing: 0.2px;
+}
+
+.node-note {
+  font-size: 9.5px;
+  color: #7A5C3D;
+  margin-top: 2px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 115px;
+}
+
+/* Four Corner Ornaments */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid #C49B38;
+  pointer-events: none;
+  transition: border-color 0.2s;
+}
+.corner-tl { top: 2px; left: 2px; border-right: none; border-bottom: none; }
+.corner-tr { top: 2px; right: 2px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: 2px; left: 2px; border-right: none; border-top: none; }
+.corner-br { bottom: 2px; right: 2px; border-left: none; border-top: none; }
+
+/* ── Imperial Branch Color Schemes ── */
+
+/* Main / Bạch Ngọc - Trưởng chi & Thủy tổ */
+.node-type-main {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDF9F0 100%);
+  border-color: #B8860B;
+}
+.node-type-main .node-name { color: #42210B; }
+.node-type-main [class^="corner-"] { border-color: #B8860B; }
+
+/* Blue / Lam Ngọc - Chi 1 */
+.node-type-blue {
+  background: linear-gradient(180deg, #F5F9FD 0%, #E6EFF8 100%);
+  border-color: #6896C5;
+}
+.node-type-blue .node-name { color: #173859; }
+.node-type-blue [class^="corner-"] { border-color: #6896C5; }
+.node-type-blue .node-gen-badge {
+  background: linear-gradient(135deg, #1C446C 0%, #2A6094 100%);
+  border-color: #8CB1D9;
+}
+
+/* Green / Thanh Ngọc - Chi 2 */
+.node-type-green {
+  background: linear-gradient(180deg, #F4FAF4 0%, #E4F1E4 100%);
+  border-color: #6BAF6B;
+}
+.node-type-green .node-name { color: #1E4D1E; }
+.node-type-green [class^="corner-"] { border-color: #6BAF6B; }
+.node-type-green .node-gen-badge {
+  background: linear-gradient(135deg, #1B521B 0%, #2D7A2D 100%);
+  border-color: #92D092;
+}
+
+/* Red / Chu Sa - Chi 3 */
+.node-type-red {
+  background: linear-gradient(180deg, #FDF5F5 0%, #FAE4E4 100%);
+  border-color: #D47272;
+}
+.node-type-red .node-name { color: #691717; }
+.node-type-red [class^="corner-"] { border-color: #D47272; }
+.node-type-red .node-gen-badge {
+  background: linear-gradient(135deg, #8A1A1A 0%, #B82828 100%);
+  border-color: #FFA3A3;
+}
+
+/* Gold / Hoàng Kim - Chi 4 & Danh tộc */
+.node-type-gold {
+  background: linear-gradient(180deg, #FEFBF0 0%, #FBF0D2 100%);
+  border-color: #D8AF37;
+}
+.node-type-gold .node-name { color: #5C4108; }
+.node-type-gold [class^="corner-"] { border-color: #D8AF37; }
+.node-type-gold .node-gen-badge {
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 100%);
+  color: #1A1205;
+  border-color: #FFF2B2;
+}
+
+/* ── Selected & Highlight Glow States ── */
+.family-node.selected {
+  outline: none;
+  border-color: #E1B12C !important;
+  box-shadow: 0 0 0 2.5px #E1B12C, 0 0 20px rgba(225, 177, 44, 0.55), 0 8px 18px rgba(0, 0, 0, 0.25) !important;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.family-node.highlighted {
+  animation: pulseGoldGlow 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes pulseGoldGlow {
+  0% {
+    box-shadow: 0 0 0 2px #E1B12C, 0 0 12px rgba(225, 177, 44, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 3px #F5D061, 0 0 26px rgba(245, 208, 97, 0.85);
+  }
+}
+
+/* Connection Handles */
+.handle-target, .handle-source {
+  opacity: 0;
+  transition: all 0.2s;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #7A1810 !important;
+  border: 1.5px solid #F5D061 !important;
+  border-radius: 50% !important;
+  z-index: 20;
+}
+
+.family-node:hover .handle-target, 
+.family-node:hover .handle-source {
+  opacity: 0.9;
+  transform: scale(1.2);
+}
